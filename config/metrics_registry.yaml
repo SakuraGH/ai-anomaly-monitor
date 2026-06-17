@@ -1,0 +1,26 @@
+# 指标口径注册表
+# 每个指标包含：唯一ID、名称、计算口径、数据源、可下钻维度、优先级
+
+metrics:
+  # 示例：日销售额
+  # - metric_id: "daily_sales"
+  #   metric_name: "日销售额"
+  #   formula: "SUM(sales_amount)"
+  #   description: "当日所有订单的销售金额总和"
+  #   data_source:
+  #     type: "csv"
+  #     path: "data/my_data.csv"
+  #     date_column: "date"
+  #     value_column: "sales"
+  #   update_time: "09:00"
+  #   owner: "数据组-张三"
+  #   dimensions:
+  #     - name: "channel"
+  #       label: "渠道"
+  #     - name: "region"
+  #       label: "地域"
+  #   priority: "P0"
+  #   baseline_type: "近4周同期均值"
+  #   alert_threshold:
+  #     change_rate: 0.10
+  #     z_score: 2.0

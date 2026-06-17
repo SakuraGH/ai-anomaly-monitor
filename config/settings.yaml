@@ -1,0 +1,40 @@
+app:
+  name: "AI 异常监控与归因系统"
+  version: "0.1.0"
+  debug: true
+
+server:
+  host: "0.0.0.0"
+  port: 8000
+
+database:
+  url: "sqlite:///data/anomaly_monitor.db"
+
+scheduler:
+  enabled: true
+  monitor_cron: "0 9 * * *"  # 每天 09:00 执行监控
+
+detection:
+  default_threshold:
+    P0: 2.0   # P0 指标用 2σ，更敏感
+    P1: 2.5
+    P2: 3.0
+  baseline_window_weeks: 4  # 基线取近4周同期均值
+  moving_average_window: 7  # 移动平均窗口7天
+
+attribution:
+  top_n: 5              # 展示 top 5 贡献因素
+  drill_depth_max: 3    # 最大下钻层数
+  min_contribution_pct: 5  # 贡献占比低于5%不展示
+
+llm:
+  provider: "claude"    # claude / openai / custom
+  config_file: "config/llm_config.yaml"
+
+knowledge:
+  vector_db_path: "data/knowledge_db"
+  search_top_k: 3       # 检索 top 3 相似案例
+
+notification:
+  enabled: false
+  channels: []           # email / dingtalk / wecom
